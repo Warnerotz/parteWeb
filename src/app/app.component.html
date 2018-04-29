@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['home']">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item" [routerLinkActive]=" [ 'activado']">
+                <a class="nav-link" [routerLink]="['home']"> Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]=" [ 'activado']">
+                <a class="nav-link" [routerLink]="['listas']">Listas</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]=" [ 'activado']">
+                <a class="nav-link" [routerLink]="['reproductor']">Reproductor</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Proyecto final </h1>
+        <p class="lead">Me voy a cortar las venitas wapas</p>
+    </div>
+</div>
+
+<div class="container">
+    <router-outlet></router-outlet>
+
+</div>
