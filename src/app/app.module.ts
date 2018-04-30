@@ -17,6 +17,7 @@ import { ListasService } from './servicios/listas/listas.service';
 
 // pipes
 import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
     HomeComponent,
     ReproductorComponent,
     DomseguroPipe,
-    ListasComponent
+    ListasComponent,
+    NgDropFilesDirective
   ],
   imports: [
     BrowserModule,
