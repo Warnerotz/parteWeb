@@ -29,6 +29,16 @@ export class ListasService {
 
   }
 
+  getLista(listaId) {
+    return this.http.get(this.listaURL + 'list/' + listaId).map(res => res.json());
+
+  }
+
+  getMedia(mediaId) {
+    console.log(mediaId);
+    return this.http.get(this.listaURL + 'list/media/' + mediaId ).map(res => res);
+  }
+
   getListas() {
 
     return this.http.get(this.listaURL + 'lists').map(res => res.json());

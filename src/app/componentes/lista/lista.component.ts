@@ -13,7 +13,6 @@ import { ListasService } from "../../servicios/listas/listas.service";
 export class ListaComponent implements OnInit {
   isInDropZone = false;
 
-  archivos: FileItem[] = [];
 
   public lista: Lista;
 
@@ -21,24 +20,23 @@ export class ListaComponent implements OnInit {
 
   ngOnInit() {
     this.lista = {
-      name: "",
-      media: [
+      _id: '',
+       name: '',
+       media: [
         {
-          name: "",
-          path: ""
+          name: '',
+          path: '',
+          size: '',
+          fellow: ''
         }
       ]
     };
   }
 
-  public cleanPayload(e) {
-    event.preventDefault();
-    this.archivos = [];
-  }
-
   public guardar() {
     this.listasService.postLista(this.lista).subscribe(data => {
-      this.router.navigate(["/listas"]);
+      console.log(data);
+      this.router.navigate([`/listView/${data.list._id}`]);
     });
   }
 }

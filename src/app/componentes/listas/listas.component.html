@@ -19,10 +19,9 @@
                 </tr>
             </thead>
             <tbody *ngFor="let lista of listas; let i = index">
-                <tr>
+                <tr [routerLink]="['/listView',lista._id]">
                     <td>{{i+1}}</td>
                     <td>{{lista.name}}</td>
-                    <td>{{lista.createdAt | date:'dd/MM/yyyy'}}</td>
                 </tr>
             </tbody>
         </table>

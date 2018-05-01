@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,10 +15,13 @@ import { ListasComponent } from './componentes/listas/listas.component';
 
 // servicios
 import { ListasService } from './servicios/listas/listas.service';
+import { WebsocketService } from './servicios/websocket/websocket.service';
 
 // pipes
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { ListViewComponent } from './componentes/list-view/list-view.component';
+
 
 @NgModule({
   declarations: [
@@ -27,15 +31,17 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     ReproductorComponent,
     DomseguroPipe,
     ListasComponent,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+    ListViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    FileUploadModule
   ],
-  providers: [ListasService],
+  providers: [ListasService, WebsocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
