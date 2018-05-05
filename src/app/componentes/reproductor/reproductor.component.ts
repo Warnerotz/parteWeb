@@ -2,6 +2,7 @@ import { ListasService } from '../../servicios/listas/listas.service';
 import { WebsocketService } from '../../servicios/websocket/websocket.service';
 
 import { Component, OnInit } from '@angular/core';
+import {VgAPI} from 'videogular2/core';
 
 @Component({
   selector: 'app-reproductor',
@@ -9,23 +10,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reproductor.component.css']
 })
 export class ReproductorComponent implements OnInit {
-  public video = 'small.mp4';
-  public src= "../../../assets/media/dolbycanyon.mp4";
-  constructor(private _WebSocketService: WebsocketService, private _ListasService: ListasService) { }
+  public video;
+  public api;
+  msg;
+  public connection;
+  public src = '../../../assets/media/dolbycanyon.mp4';
+  constructor(private _WebSocketService: WebsocketService, private _ListasService: ListasService) {
+
+
+   }
 
   ngOnInit() {
+    console.log("holaaa");
 
+    this._WebSocketService.reciveVideo().subscribe(msg => {
+     console.log("dentro del subscribe!!")
+      this.video = msg;
+      this.addVideo();
+    });
   }
 
+
+
+  onPlayerReady(api: VgAPI) {
+    this.api = api;
+
+
+
+}
+
   addVideo() {
-    this.src = "http://localhost:4512/api/list/media/small.mp4"
-    /*
     this._ListasService.getMedia(this.video).subscribe(data => {
       console.log(data.url);
       this.src = data.url;
-
     });
-*/
+
   }
 
 }

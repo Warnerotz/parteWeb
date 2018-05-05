@@ -1,6 +1,35 @@
-<video width="320" height="240" controls>
-    <source [(src)]="src" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<vg-player (onPlayerReady)="onPlayerReady($event)">
+    <vg-overlay-play></vg-overlay-play>
+    <vg-buffering></vg-buffering>
+
+    <vg-scrub-bar [vgSlider]="true">
+        <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+    </vg-scrub-bar>
+
+    <vg-controls [vgAutohide]="true" [vgAutohideTime]="1.5">
+        <vg-play-pause></vg-play-pause>
+        <vg-playback-button></vg-playback-button>
+
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
+
+        <vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+
+    <video [vgMedia]="media" #media id="singleVideo" preload="auto" [src]="src" type="video/mp4" crossorigin>
+    </video>
+</vg-player>
+
+<p>{{msg}} </p>
+<p> video :{{video}}</p>
+
 
 <button class="btn btn-success" (click)="this.addVideo()">Añadir video</button>

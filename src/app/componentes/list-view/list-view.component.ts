@@ -36,36 +36,37 @@ export class ListViewComponent implements OnInit {
   ngOnInit() {
     this.getList();
     this.uploadMedia();
-    this.mostrarmensaje();
 
 
   }
 
-  uploadMedia(){
+  sendMedia(media) {
+    this._websocketService.sendVideo({src: media});
+
+  }
+
+  uploadMedia() {
     this.uploader = new FileUploader({url: 'http://localhost:4512/api/list/media/' + this.id} );
-    console.log(this.uploader.queue);
-    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) =>{
+
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this. attachmentList.push(JSON.parse(response));
     };
   }
 
-  mostrarmensaje(){
-    this._websocketService.mandarmensaje();
 
-  }
 
   getList(){
   this._route.params.map(params => params['id'])
     .subscribe( id => {
-      this.id= id;
-      this.listasService.getLista(id).subscribe(response =>{
-        console.log(response.list)
-        if(!response.list){
+      this.id = id;
+      this.listasService.getLista(id).subscribe(response => {
+
+        if (!response.list) {
           this._router.navigate(['/listas']);
 
         } else {
           this.lista = response.list;
-          console.log(this.lista)
+
         }
 
       });

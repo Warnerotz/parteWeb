@@ -54,6 +54,7 @@
                             <th>Nombre</th>
                             <th>Tamaño</th>
                             <th>tipo</th>
+                            <th>mandar</th>
                         </tr>
                     </thead>
                     <tbody *ngFor="let media of lista.media; let i = index">
@@ -62,6 +63,7 @@
                             <td>{{media.name}}</td>
                             <td>{{media.size / 1024 / 1024 | number: '.2-2'}}MB</td>
                             <td>{{media.fellow}}</td>
+                            <td><button class="btn btn-success" (click)="sendMedia(media.name)">Mandar</button></td>
                         </tr>
                     </tbody>
                 </table>

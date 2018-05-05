@@ -3,8 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FileUploadModule } from 'ng2-file-upload';
-
 import { AppRoutingModule } from './app-routing.module';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+
+
 
 // componentes
 import { AppComponent } from './app.component';
@@ -22,6 +28,7 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { ListViewComponent } from './componentes/list-view/list-view.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
 
 @NgModule({
   declarations: [
@@ -36,10 +43,15 @@ import { ListViewComponent } from './componentes/list-view/list-view.component';
   ],
   imports: [
     BrowserModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    FileUploadModule
+    FileUploadModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [ListasService, WebsocketService],
   bootstrap: [AppComponent]
