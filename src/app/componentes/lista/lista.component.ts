@@ -2,13 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { Lista } from "../../modelos/lista";
-import { FileItem } from "../../modelos/fileItem";
 import { ListasService } from "../../servicios/listas/listas.service";
+import {degradado} from '../../animation';
 
 @Component({
   selector: "app-lista",
   templateUrl: "./lista.component.html",
-  styleUrls: ["./lista.component.css"]
+  styleUrls: ["./lista.component.css"],
+  animations: [degradado]
 })
 export class ListaComponent implements OnInit {
   isInDropZone = false;

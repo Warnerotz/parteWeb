@@ -1,0 +1,52 @@
+<div class="col-md-4 offset-md-4" [@fadeIn]>
+    <div class='alert alert-success' *ngIf="status == 'success'">
+        Registro completado correctamente <a [routerLink]="['/login']">identificate aquí</a>
+    </div>
+    <div class='alert alert-danger' *ngIf="status == 'error'">
+        Error al Registrarte
+    </div>
+
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Registro</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" autocomplete="off" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                <div class="form-group">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" #name='ngModel' [(ngModel)]="user.name" class="form-control" name="inputName" placeholder="nombre completo" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!name.valid && name.touched">Nombre obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputSurname">Apellidos</label>
+                    <input type="text" #surname='ngModel' [(ngModel)]="user.surname" class="form-control" name="inputSurname" placeholder="apellidos" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!surname.valid && surname.touched">Apellidos obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAge">Edad</label>
+                    <input type="text" #age='ngModel' [(ngModel)]="user.age" class="form-control" name="inputAge" placeholder="edad" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!age.valid && age.touched">Edad obligatoria</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" #email='ngModel' [(ngModel)]="user.email" class="form-control" name="inputEmail" placeholder="Email" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!email.valid && email.touched">Email obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" #password='ngModel' [(ngModel)]="user.password" class="form-control" name="inputPassword" placeholder="Password" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!password.valid && password.touched">Password obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputVerify">Verify</label>
+                    <input type="password" #verify='ngModel' [(ngModel)]="pass2" class="form-control" name="inputVerify" placeholder="Password (de nuevo)" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!verify.valid && verify.touched">Password verify obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-right" [disabled]='!registerForm.form.valid'>{{title}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

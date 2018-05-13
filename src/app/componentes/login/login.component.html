@@ -1,0 +1,33 @@
+<div class="col-md-4 offset-md-4" [@fadeIn]>
+    <div class='alert alert-success' *ngIf="status == 'success'">
+        Login correcto
+    </div>
+    <div class='alert alert-danger' *ngIf="status == 'error'">
+        {{body.message}}
+    </div>
+
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Login</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" autocomplete="off" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" #name='ngModel' [(ngModel)]="user.email" class="form-control" name="inputEmail" placeholder="email" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!name.valid && name.touched">Email obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" #surname='ngModel' [(ngModel)]="user.password" class="form-control" name="inputPassword" placeholder="password" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!surname.valid && surname.touched">Password obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-right" [disabled]='!loginForm.form.valid'>{{title}}</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>

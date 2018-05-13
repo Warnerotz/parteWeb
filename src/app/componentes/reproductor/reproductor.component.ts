@@ -1,5 +1,6 @@
 import { ListasService } from '../../servicios/listas/listas.service';
 import { WebsocketService } from '../../servicios/websocket/websocket.service';
+import {degradado} from '../../animation';
 
 import { Component, OnInit } from '@angular/core';
 import {VgAPI} from 'videogular2/core';
@@ -7,7 +8,8 @@ import {VgAPI} from 'videogular2/core';
 @Component({
   selector: 'app-reproductor',
   templateUrl: './reproductor.component.html',
-  styleUrls: ['./reproductor.component.css']
+  styleUrls: ['./reproductor.component.css'],
+  animations: [degradado]
 })
 export class ReproductorComponent implements OnInit {
   public video;

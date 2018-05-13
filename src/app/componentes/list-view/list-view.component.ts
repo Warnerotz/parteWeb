@@ -4,11 +4,13 @@ import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import { ListasService } from '../../servicios/listas/listas.service';
 import { Lista } from '../../modelos/lista';
 import { WebsocketService } from '../../servicios/websocket/websocket.service';
+import {degradado} from '../../animation';
 
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
-  styleUrls: ['./list-view.component.css']
+  styleUrls: ['./list-view.component.css'],
+  animations: [degradado]
 })
 export class ListViewComponent implements OnInit {
   public id;

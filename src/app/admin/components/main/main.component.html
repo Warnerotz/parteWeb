@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <h3 class="text-center">{{title}}</h3>
+    <div class="row">
+        <div class='col-md-2'>
+            <div class='sidebar-admin'>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['listado']" [routerLinkActive]="['active']">listado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['crear']" [routerLinkActive]="['active']">Crear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['editar']" [routerLinkActive]="['active']">Editar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
