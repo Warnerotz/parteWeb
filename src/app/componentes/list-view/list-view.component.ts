@@ -1,7 +1,9 @@
+import { UsersService } from '../../servicios/users/users.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import { ListasService } from '../../servicios/listas/listas.service';
+
 import { Lista } from '../../modelos/lista';
 import { WebsocketService } from '../../servicios/websocket/websocket.service';
 import {degradado} from '../../animation';
@@ -19,6 +21,7 @@ export class ListViewComponent implements OnInit {
   public lista: Lista = {
     _id: '',
      name: '',
+     img: '',
      media: [
       {
         name: '',
@@ -31,7 +34,10 @@ export class ListViewComponent implements OnInit {
   };
 
   constructor(public listasService: ListasService,
-      public _router: Router, public _route: ActivatedRoute, public _websocketService: WebsocketService) {
+      public _router: Router, public _route: ActivatedRoute,
+      public _websocketService: WebsocketService,
+      public _usersService: UsersService
+    ) {
 
   }
 
@@ -48,7 +54,7 @@ export class ListViewComponent implements OnInit {
   }
 
   uploadMedia() {
-    this.uploader = new FileUploader({url: 'http://localhost:4512/api/list/media/' + this.id} );
+    this.uploader = new FileUploader({url: 'http://localhost:4512/api/list/media/' + this.id, authToken: this._usersService.getToken()} );
 
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       this. attachmentList.push(JSON.parse(response));

@@ -11,12 +11,14 @@ import { AddComponent } from './admin/components/add/add.component';
 import { EditComponent } from './admin/components/edit/edit.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
+import { UserEditComponent } from './componentes/user-edit/user-edit.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'listas', component: ListasComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'misDatos', component: UserEditComponent},
   {path: 'lista/:id', component: ListaComponent},
   {path: 'listView/:id', component: ListViewComponent},
   {path: 'reproductor', component: ReproductorComponent},

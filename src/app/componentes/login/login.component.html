@@ -14,13 +14,18 @@
             <form class="form" role="form" autocomplete="off" #loginForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="inputEmail">Email</label>
-                    <input type="email" #name='ngModel' [(ngModel)]="user.email" class="form-control" name="inputEmail" placeholder="email" required>
-                    <div class="alert alert-danger" role="alert" *ngIf="!name.valid && name.touched">Email obligatorio</div>
+                    <input type="email" #name='ngModel' [(ngModel)]="user.email" class="form-control" [ngClass]="{'is-invalid': (!name.valid && name.touched)}" name="inputEmail" placeholder="email" required>
+                    <div class="invalid-feedback" *ngIf="!name.valid && name.touched">
+                        Email obligatorio
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" #surname='ngModel' [(ngModel)]="user.password" class="form-control" name="inputPassword" placeholder="password" required>
-                    <div class="alert alert-danger" role="alert" *ngIf="!surname.valid && surname.touched">Password obligatorio</div>
+                    <input type="password" #password='ngModel' [(ngModel)]="user.password" [ngClass]="{'is-invalid': (!password.valid && password.touched)}" class="form-control" name="inputPassword" placeholder="password" required>
+                    <div class="invalid-feedback" *ngIf="!password.valid && password.touched">
+                        Password obligatorio
+                    </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-lg float-right" [disabled]='!loginForm.form.valid'>{{title}}</button>

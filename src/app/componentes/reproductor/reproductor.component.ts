@@ -29,9 +29,8 @@ export class ReproductorComponent implements OnInit {
      this.video = msg.src;
      this.play = msg.play;
      this.addVideo();
-     if(this.play){
-      this.playVideo();
-     }
+     this.playVideo();
+
     });
     this._WebSocketService.pauseVideo().subscribe(msg => {
     if(msg){
@@ -42,7 +41,7 @@ export class ReproductorComponent implements OnInit {
     });
 
     this._WebSocketService.stopVideo().subscribe(msg => {
-      if(msg){
+      if (msg) {
         this.stopVideo();
 
       }

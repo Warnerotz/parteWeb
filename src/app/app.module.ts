@@ -36,6 +36,7 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { ListViewComponent } from './componentes/list-view/list-view.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
+import { UserEditComponent } from './componentes/user-edit/user-edit.component';
 
 
 
@@ -55,7 +56,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
     AddComponent,
     EditComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
