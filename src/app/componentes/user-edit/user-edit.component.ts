@@ -16,7 +16,6 @@ export class UserEditComponent implements OnInit {
   public userId;
   public user: User;
   uploader: FileUploader;
-  attachmentList: any = [];
   public identity;
   public token;
   public status;
@@ -26,34 +25,36 @@ export class UserEditComponent implements OnInit {
     this.identity = this._usersService.getIdentity();
     this.token =  this._usersService.getToken();
     this.user = this.identity;
+
    }
 
   ngOnInit() {
-    this.userId = this.identity._id;
     this.uploadFile();
-
   }
 
   uploadFile() {
-    this.uploader = new FileUploader({url: 'http://localhost:4512/api/image/' + this.userId, authToken: this.token, itemAlias: 'image' } );
-
-
-
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      this. attachmentList.push(JSON.parse(response));
-    };
+    this.uploader = new FileUploader({url: 'http://localhost:4512/api/image/' + this.identity._id,
+     authToken: this.token,
+     itemAlias: 'image' });
   }
 
 
 
   onSubmit() {
+
     this._usersService.updateUser(this.user).subscribe(
       response => {
-
         if (!response.user) {
           this.status = 'error';
         } else {
-          localStorage.setItem('identity', JSON.stringify(this.user));
+          console.log(response.user._id);
+          this._usersService.getUser(response.user._id).subscribe(resp => {
+            localStorage.setItem('identity', JSON.stringify(resp.user));
+
+          });
+
+
+
 
         }
       },

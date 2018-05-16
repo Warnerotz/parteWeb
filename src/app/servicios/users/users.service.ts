@@ -38,6 +38,15 @@ export class UsersService {
 
   }
 
+  getUser(userId) {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'authorization': this.getToken(),
+    });
+    return this.http.get(this.url + 'user/' + userId, {headers: headers}).map(res => res.json());
+
+  }
+
   getIdentity() {
     const identity = JSON.parse(localStorage.getItem('identity'));
     if (identity !== undefined) {
