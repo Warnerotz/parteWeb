@@ -1,22 +1,19 @@
-<div class="container" [@fadeIn]>
-    <div class=row>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Angular 4</h5>
-                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem voluptate porro quia ipsa, delectus eum vitae consequuntur sunt, aliquam pariatur, quasi quaerat! Iure necessitatibus, at sunt quia quisquam hic accusantium..</p>
-                    <a href="#" class="btn btn-success">Botoncito</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Angular 5</h5>
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque ullam molestias in repellendus possimus voluptatum officiis eius amet? Optio sapiente eaque quas iure quis. Necessitatibus error facere inventore sed in.</p>
-                    <a href="#" class="btn btn-success">Botoncitossss</a>
-                </div>
-            </div>
+<div class="video-header wrap">
+    <div class="fullscreen-video-wrap">
+        <video src='../../../assets/media/opening dragon ball.mp4' autoplay muted onloadedmetadata="this.muted = true" loop></video>
+    </div>
+    <div class='header-overlay'>
+        <div class="loginBox">
+            <img src="../../../assets/images/PerfilDefecto.jpg" class="user">
+            <h2>Log In Here</h2>
+            <form role="form" autocomplete="off" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <p>Email</p>
+                <input type="text" name='email' #name='ngModel' [(ngModel)]="user.email" placeholder="Enter Email" required>
+                <p>Password</p>
+                <input type="password" name='pass' #password='ngModel' [(ngModel)]="user.password" placeholder="••••••" required>
+                <input type="submit" name="submit" value="Sign In">
+                <button name="register" class='register' [routerLink]="['/register']" value="Sign In">Register</button>
+            </form>
         </div>
     </div>
 </div>

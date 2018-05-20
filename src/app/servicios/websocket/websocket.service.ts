@@ -22,8 +22,13 @@ export class WebsocketService {
 
   }
 
-  stopVideo(){
+  stopVideo() {
     return this.socket.fromEvent<any>('stopClient').map(data => data);
+
+  }
+
+  pauseVideoEmiter() {
+    this.socket.emit('pause', true);
 
   }
 

@@ -1,0 +1,46 @@
+<div class='container-fluid'>
+    <div class='d-flex flex-row flex-wrap justify-content-between flex-wrap'>
+        <div class="card-deck ">
+
+            <div class="card cardList" *ngFor="let lista of listas">
+                <img [routerLink]="['/listView',lista._id]" class="card-img-top imgListas" src="{{lista.img ? url+ 'listImage/' + lista.img : 'http://via.placeholder.com/348x222'}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{lista.name}}</h5>
+                    <p class="card-text text-justify">{{lista.description}}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <button [routerLink]="['/misDatos/listEditor',lista._id]" [routerLinkActive]="['active']" (click)='addListLocal(lista._id)' class='btn btn-success'>Editar lista</button>
+                    <button class='btn btn-danger'>Borrar lista</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>imagen</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fecha Creación</th>
+                <th>Fecha Modificación</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let lista of listas">
+            <tr>
+                <td>{{lista.img}}</td>
+                <td>{{lista.name}}</td>
+                <td>{{lista.description}}</td>
+                <td>{{lista.createdAt | date:'dd/MM/yyyy'}}</td>
+                <td>{{lista.updatedAt | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button [routerLink]="['/misDatos/listEditor',lista._id]" [routerLinkActive]="['active']" (click)='addListLocal(lista._id)' class='btn btn-success'>Editar lista</button>
+                    <button class='btn btn-danger mt-3'>Borrar lista</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+  -->
+</div>

@@ -17,7 +17,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // componentes
 import { AppComponent } from './app.component';
-import { ListaComponent } from './componentes/lista/lista.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { ReproductorComponent } from './componentes/reproductor/reproductor.component';
 import { ListasComponent } from './componentes/listas/listas.component';
@@ -25,6 +24,14 @@ import { MainComponent } from './admin/components/main/main.component';
 import { ListComponent } from './admin/components/list/list.component';
 import { AddComponent } from './admin/components/add/add.component';
 import { EditComponent } from './admin/components/edit/edit.component';
+import { ListViewComponent } from './componentes/list-view/list-view.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { RegisterComponent } from './componentes/register/register.component';
+import { MainUserComponent } from './adminUser/components/main/main.component';
+import { UserEditComponent } from './adminUser/components/user-edit/user-edit.component';
+import { ListsAdminComponent } from './adminUser/components/lists-admin/lists-admin.component';
+import { ListEditComponent } from './adminUser/components/list-edit/list-edit.component';
+import { CreateListComponent } from './adminUser/components/create-list/create-list.component';
 
 // servicios
 import { ListasService } from './servicios/listas/listas.service';
@@ -33,10 +40,8 @@ import { UsersService } from './servicios/users/users.service';
 
 // pipes
 import { DomseguroPipe } from './pipes/domseguro.pipe';
-import { ListViewComponent } from './componentes/list-view/list-view.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { RegisterComponent } from './componentes/register/register.component';
-import { UserEditComponent } from './componentes/user-edit/user-edit.component';
+
+
 
 
 
@@ -45,7 +50,6 @@ const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
-    ListaComponent,
     HomeComponent,
     ReproductorComponent,
     DomseguroPipe,
@@ -57,7 +61,11 @@ const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
     EditComponent,
     LoginComponent,
     RegisterComponent,
-    UserEditComponent
+    UserEditComponent,
+    MainUserComponent,
+    ListsAdminComponent,
+    ListEditComponent,
+    CreateListComponent
   ],
   imports: [
     BrowserModule,

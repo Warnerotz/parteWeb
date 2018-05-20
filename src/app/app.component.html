@@ -1,14 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navAltura">
     <a class="navbar-brand" [routerLink]="['home']">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['home']" [routerLinkActive]=" [ 'active']"> Home</a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['listas']" [routerLinkActive]=" [ 'active']">Listas</a>
             </li>
@@ -16,37 +14,14 @@
                 <a class="nav-link" [routerLink]="['reproductor']" [routerLinkActive]=" [ 'active']">Reproductor</a>
             </li>
         </ul>
-        <ul class="navbar-nav my-2 my-lg-0" *ngIf="!identity">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['register']" [routerLinkActive]=" [ 'active']">Registro</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['login']" [routerLinkActive]=" [ 'active']">Login</a>
-            </li>
-        </ul>
 
-        <div class=" my-2 my-lg-0 dropdown" *ngIf="identity">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{identity.name}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" [routerLink]="['/misDatos']">Perfil</a>
-                <a class="dropdown-item pointer" (click)='logout()'>Salir</a>
-            </div>
+        <div class=" my-2 my-lg-0 dropdown2" *ngIf="identity">
+            <img [routerLink]="['/misDatos']" src="{{user.image !=='null' ? url+ 'image/' + user.image : '../../../assets/images/PerfilDefecto.jpg'}}" class='avatarImageNav' />
         </div>
 
     </div>
 </nav>
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Proyecto final </h1>
-        <p class="lead">Me voy a cortar las venitas wapas</p>
-    </div>
-</div>
-
-
-
-<div class="container-fluid">
+<div>
     <router-outlet></router-outlet>
 
 </div>

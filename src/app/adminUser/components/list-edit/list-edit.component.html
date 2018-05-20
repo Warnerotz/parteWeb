@@ -1,0 +1,59 @@
+<div class='container' *ngIf="lista">
+    <div class='alert alert-success' *ngIf="status == 'success'">
+        Has actualizado tu información correctamente
+    </div>
+    <div class='alert alert-danger' *ngIf="status == 'error'">
+        No se ha podido actualizar tus datos
+    </div>
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Editar Datos</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" autocomplete="off" #userEditForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" #name='ngModel' [(ngModel)]="lista.name" class="form-control" name="inputName" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!name.valid && name.touched">Nombre obligatorio</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Descripcion</label>
+                    <input type="text" #description='ngModel' [(ngModel)]="lista.description" class="form-control" name="inputDescription" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="!description.valid && description.touched">Apellidos obligatorio</div>
+                </div>
+                <div class='uploadImage'>
+                    <img src="{{lista.img ? url+ 'listImage/' + lista.img : '../../../assets/images/PerfilDefecto.jpg'}}" class='avatarImage' />
+                </div>
+                <div>
+                    <label for="inputGroupFile01">Escoge un Avatar</label>
+                    <input type="file" name="fileUplaod" id="inputGroupFile01" ng2FileSelect [uploader]="uploader">
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-right" [disabled]='!userEditForm.form.valid' (click)="uploader.queue[0].upload()">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table" *ngIf='lista.media !==[]'>
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Tamaño</th>
+                <th>Tipo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let media of lista.media; let i = index">
+                <th> {{media.name}}</th>
+                <td>{{media.size / 1024 / 1024 | number: '.2-2'}}MB</td>
+                <td>{{media.fellow}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteMedia(lista._id,media._id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

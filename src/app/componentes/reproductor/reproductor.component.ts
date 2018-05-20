@@ -15,6 +15,7 @@ export class ReproductorComponent implements OnInit {
   public video;
   public api;
   public play=false;
+  public state;
   msg;
   public connection;
   public src = '../../../assets/media/dolbycanyon.mp4';
@@ -24,19 +25,17 @@ export class ReproductorComponent implements OnInit {
    }
 
   ngOnInit() {
+    console.log('holaaa');
     this._WebSocketService.reciveVideo().subscribe(msg => {
-     console.log(msg);
      this.video = msg.src;
      this.play = msg.play;
      this.addVideo();
      this.playVideo();
-
     });
     this._WebSocketService.pauseVideo().subscribe(msg => {
-    if(msg){
       this.pauseVideo();
 
-    }
+
 
     });
 
@@ -51,12 +50,12 @@ export class ReproductorComponent implements OnInit {
 
 
 
+
   onPlayerReady(api: VgAPI) {
     console.log(api);
     this.api = api;
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
       () => {
-          console.log("holaa");
       }
   );
 
@@ -66,21 +65,28 @@ export class ReproductorComponent implements OnInit {
 
   addVideo() {
     this._ListasService.getMedia(this.video).subscribe(data => {
-      console.log(data.url);
       this.src = data.url;
     });
 
   }
 
   playVideo() {
+    this.api.getDefaultMedia().subscriptions.canPlay.subscribe(() => {
+      this.api.getDefaultMedia().play();
 
-    setTimeout(() => this.api.getDefaultMedia().play(), 300);
+    });
 
-
+    if (this.api.state === 'paused') {
+      this.api.getDefaultMedia().play();
+    }
   }
 
   pauseVideo() {
-    setTimeout(() => this.api.getDefaultMedia().pause(), 300);
+    console.log(this.api.state);
+    if (this.api.state === 'playing') {
+      this.api.getDefaultMedia().pause();
+    }
+
   }
 
   stopVideo() {

@@ -55,6 +55,29 @@ export class ListasService {
       'authorization': this._usersService.getToken(),
     });
     return this.http.get(this.listaURL + 'lists', {headers: headers}).map(res => res.json());
+  }
 
+  deleteMedia(listId, mediaId) {
+    const params = JSON.stringify( {
+      listId: listId,
+      mediaId: mediaId
+    });
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'authorization': this._usersService.getToken(),
+    });
+
+    return this.http.put(this.listaURL + 'list/media/delete', params, {headers: headers})
+    .map(response => response.json());
+  }
+
+  updateList(list) {
+    const params = JSON.stringify(list);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'authorization': this._usersService.getToken(),
+    });
+    return this.http.put(this.listaURL + 'list/' + list._id, params, {headers: headers})
+      .map(res => res.json());
   }
 }

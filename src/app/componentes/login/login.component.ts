@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
     // loguear al user y conseguir el objeto usuario
     this._usersService.login(this.user).subscribe(
       response => {
+        delete response.user.password;
         this.identity = response.user;
 
         if (!this.identity || !this.identity._id) {
           console.log('El usuario no se ha logueado correctamente');
 
         } else {
-
           localStorage.setItem('identity', JSON.stringify(this.identity));
           // conseguir el token
           this._usersService.login(this.user, true).subscribe(

@@ -1,29 +1,17 @@
-<div class='row' [@fadeIn]>
-    <div class='col-md-12 text-right'>
-        <button [routerLink]="['/lista','nuevo']" class='btn btn-success'>
-            Nueva lista
-        </button>
+<div class='container'>
+    <div class='d-flex flex-row flex-wrap justify-content-between flex-wrap'>
+        <div class="card-deck ">
 
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered text-center">
-            <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Fecha de creación</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let lista of listas; let i = index">
-                <tr [routerLink]="['/listView',lista._id]">
-                    <td>{{i+1}}</td>
-                    <td>{{lista.name}}</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="card cardList" *ngFor="let lista of listas">
+                <img [routerLink]="['/listView',lista._id]" class="card-img-top imgListas" src="{{lista.img ? url+ 'listImage/' + lista.img : 'http://via.placeholder.com/348x222'}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{lista.name}}</h5>
+                    <p class="card-text text-justify">{{lista.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <span>fecha de creacion</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

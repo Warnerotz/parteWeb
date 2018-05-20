@@ -3,3 +3,54 @@
 .pointer {
     cursor: pointer;
 }
+
+.navAltura {
+    height: 70px;
+    font-size: 25px;
+}
+
+.avatarImage {
+    width: 60px;
+}
+
+.avatarImageNav {
+    width: 50px;
+    height: 50ps;
+    border-radius: 700px;
+    overflow: hidden;
+}
+
+.cardList {
+    min-width: 350px;
+    max-width: 350px;
+    margin: 20px 0;
+}
+
+.backgroundImage {
+    background-image: url('./assets/images/beach-bench-boardwalk-462024.jpg');
+    width: 100%;
+    height: 100%;
+}
+
+.borderBotton {
+    border-bottom: solid 1px lightgray;
+}
+
+.mediaCard {
+    font-size: 25px;
+}
+
+.buttonMedia {
+    font-size: 50px;
+    color: #28a745;
+    margin: 0px 10px
+}
+
+.imgListas {
+    width: 348px;
+    height: 222px;
+}
+
+.imgListView {
+    width: 1108px;
+}

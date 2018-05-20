@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Lista } from "../../modelos/lista";
 import { ListasService } from "../../servicios/listas/listas.service";
 import {degradado} from '../../animation';
+import { GLOBAL } from '../../servicios/global';
+
 
 @Component({
   selector: "app-listas",
@@ -11,6 +13,7 @@ import {degradado} from '../../animation';
 })
 export class ListasComponent implements OnInit {
   public listas: Lista[] = [];
+  public url = GLOBAL.url;
   constructor(public listasService: ListasService) {}
 
   ngOnInit() {
@@ -20,4 +23,6 @@ export class ListasComponent implements OnInit {
       console.log("lista", this.listas);
     });
   }
+
+
 }
