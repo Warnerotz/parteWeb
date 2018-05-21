@@ -80,4 +80,15 @@ export class ListasService {
     return this.http.put(this.listaURL + 'list/' + list._id, params, {headers: headers})
       .map(res => res.json());
   }
+
+  deleteList(listaId) {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'authorization': this._usersService.getToken(),
+    });
+
+    return this.http.delete(this.listaURL + 'list/' + listaId, {headers: headers})
+    .map(resp => resp.json());
+
+  }
 }

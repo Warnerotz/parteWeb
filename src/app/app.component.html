@@ -1,22 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navAltura">
-    <a class="navbar-brand" [routerLink]="['home']">Navbar</a>
+    <a class="navbar-brand">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="identity">
                 <a class="nav-link" [routerLink]="['listas']" [routerLinkActive]=" [ 'active']">Listas</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="identity">
                 <a class="nav-link" [routerLink]="['reproductor']" [routerLinkActive]=" [ 'active']">Reproductor</a>
             </li>
         </ul>
 
-        <div class=" my-2 my-lg-0 dropdown2" *ngIf="identity">
-            <img [routerLink]="['/misDatos']" src="{{user.image !=='null' ? url+ 'image/' + user.image : '../../../assets/images/PerfilDefecto.jpg'}}" class='avatarImageNav' />
+        <div class=" my-2 my-lg-0" *ngIf="identity">
+            <img [routerLink]="['/misDatos/listsEditor']" src="{{user.image !=='null' ? url+ 'image/' + user.image : '../../../assets/images/PerfilDefecto.jpg'}}" class='avatarImageNav' />
         </div>
 
     </div>

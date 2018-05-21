@@ -22,10 +22,7 @@ import { ReproductorComponent } from './componentes/reproductor/reproductor.comp
 import { ListasComponent } from './componentes/listas/listas.component';
 import { MainComponent } from './admin/components/main/main.component';
 import { ListComponent } from './admin/components/list/list.component';
-import { AddComponent } from './admin/components/add/add.component';
-import { EditComponent } from './admin/components/edit/edit.component';
 import { ListViewComponent } from './componentes/list-view/list-view.component';
-import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { MainUserComponent } from './adminUser/components/main/main.component';
 import { UserEditComponent } from './adminUser/components/user-edit/user-edit.component';
@@ -37,6 +34,8 @@ import { CreateListComponent } from './adminUser/components/create-list/create-l
 import { ListasService } from './servicios/listas/listas.service';
 import { WebsocketService } from './servicios/websocket/websocket.service';
 import { UsersService } from './servicios/users/users.service';
+import { AdminGuardService } from './servicios/adminGuard/admin-guard.service';
+
 
 // pipes
 import { DomseguroPipe } from './pipes/domseguro.pipe';
@@ -57,9 +56,6 @@ const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
     ListViewComponent,
     MainComponent,
     ListComponent,
-    AddComponent,
-    EditComponent,
-    LoginComponent,
     RegisterComponent,
     UserEditComponent,
     MainUserComponent,
@@ -81,7 +77,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4512', options: {} };
     AngularFontAwesomeModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [ListasService, WebsocketService, UsersService],
+  providers: [ListasService, WebsocketService, UsersService, AdminGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

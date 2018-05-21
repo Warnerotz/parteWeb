@@ -6,20 +6,17 @@ import { ListasComponent } from './componentes/listas/listas.component';
 import { ListViewComponent } from './componentes/list-view/list-view.component';
 import { MainComponent } from './admin/components/main/main.component';
 import { ListComponent } from './admin/components/list/list.component';
-import { AddComponent } from './admin/components/add/add.component';
-import { EditComponent } from './admin/components/edit/edit.component';
-import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { UserEditComponent } from './adminUser/components/user-edit/user-edit.component';
 import { MainUserComponent } from './adminUser/components/main/main.component';
 import { ListsAdminComponent } from './adminUser/components/lists-admin/lists-admin.component';
 import { ListEditComponent } from './adminUser/components/list-edit/list-edit.component';
 import { CreateListComponent } from './adminUser/components/create-list/create-list.component';
+import { AdminGuardService } from './servicios/adminGuard/admin-guard.service';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'listas', component: ListasComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {
     path: 'misDatos',
@@ -36,11 +33,10 @@ const routes: Routes = [
   {
     path: 'adminPanel',
     component: MainComponent,
+    canActivate: [AdminGuardService],
     children: [
       {path: '', redirectTo: 'listado', pathMatch: 'full'},
       {path: 'listado', component: ListComponent},
-      {path: 'crear', component: AddComponent},
-      {path: 'editar', component: EditComponent},
 
     ]
 

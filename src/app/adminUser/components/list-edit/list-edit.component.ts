@@ -10,7 +10,8 @@ import { UsersService } from '../../../servicios/users/users.service';
 @Component({
   selector: 'app-list-edit',
   templateUrl: './list-edit.component.html',
-  styleUrls: ['./list-edit.component.css']
+  styleUrls: ['./list-edit.component.css'],
+  animations: [degradado],
 })
 export class ListEditComponent implements OnInit  {
   public identity;
@@ -82,7 +83,6 @@ export class ListEditComponent implements OnInit  {
     }
 
     deleteMedia(listaId, mediaId) {
-      console.log('lista', listaId, 'media', mediaId);
       this._listasService.deleteMedia(listaId, mediaId).subscribe(response => {
         this.lista = response.list;
 

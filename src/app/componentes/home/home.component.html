@@ -3,6 +3,7 @@
         <video src='../../../assets/media/opening dragon ball.mp4' autoplay muted onloadedmetadata="this.muted = true" loop></video>
     </div>
     <div class='header-overlay'>
+
         <div class="loginBox">
             <img src="../../../assets/images/PerfilDefecto.jpg" class="user">
             <h2>Log In Here</h2>
@@ -14,6 +15,11 @@
                 <input type="submit" name="submit" value="Sign In">
                 <button name="register" class='register' [routerLink]="['/register']" value="Sign In">Register</button>
             </form>
+            <div class='alert alert-danger mt-4' *ngIf="status == 'error'">
+                {{body.message}}
+            </div>
         </div>
+
     </div>
+
 </div>

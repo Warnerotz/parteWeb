@@ -10,7 +10,8 @@ import { UsersService } from '../../../servicios/users/users.service';
 @Component({
   selector: 'app-create-list',
   templateUrl: './create-list.component.html',
-  styleUrls: ['./create-list.component.css']
+  styleUrls: ['./create-list.component.css'],
+  animations: [degradado],
 })
 export class CreateListComponent implements OnInit {
   public userId;
