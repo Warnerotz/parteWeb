@@ -1,37 +1,56 @@
-<div class="row">
-    <h3 class="text-cemter">{{title}}</h3>
-    <div class="col-md-12">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
+<div class='container'>
+    <div class="row">
+        <h3 class="text-cemter">{{title}}</h3>
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Validado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <th>{{user.name}}</th>
+                        <td>{{user.surname}}</td>
+                        <td>{{user.age}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.role}}</td>
+                        <td *ngIf="user.validated">Si</td>
+                        <td *ngIf="!user.validated">No</td>
+                        <td>
+                            <button class='btn btn-success' (click)='validarUsuario(user)'>Validar Usuario</button>
+                            <a class='btn btn-danger' href='#Modal-{{user._id}}' data-toggle="modal">Borrar Usuario</a>
+                        </td>
+                        <div class="modal fade" id="Modal-{{user._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Borrar Usuario</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Estas seguro de que quieres Eliminar este usuario {{user.name}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-danger" (click)='EliminarUsuario(user._id)' data-dismiss="modal">Borrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
-
 </div>

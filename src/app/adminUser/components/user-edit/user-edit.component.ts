@@ -54,22 +54,14 @@ export class UserEditComponent implements OnInit {
           this.status = 'error';
         } else {
           this._usersService.getUser(response.user._id).subscribe(resp => {
-            console.log(resp.user);
             this.user.image = resp.user.image;
             delete resp.user.password;
             localStorage.setItem('identity', JSON.stringify(resp.user));
-
-
           });
-
-
-
-
         }
       },
       error => {
         const errorMessage = <any>error;
-        console.log(errorMessage);
         if (errorMessage !== null) {
           this.status = 'error';
         }
