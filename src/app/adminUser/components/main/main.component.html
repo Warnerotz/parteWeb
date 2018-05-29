@@ -1,7 +1,7 @@
 <div class="container-fluid">
-    <h3 class="text-center">user edit</h3>
+    <h3 class="text-center userPanel">Panel de usuario</h3>
     <div class="row">
-        <div class='col-md-2'>
+        <div class='col-md-2 sideMenu'>
             <div class='sidebar-admin'>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
@@ -9,6 +9,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['listCreator']" [routerLinkActive]="['active']">Crear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['editar']" [routerLinkActive]="['active']">Editar Mis datos</a>
                     </li>
                     <li class="nav-item" *ngIf="identity && identity.role =='ROLE_ADMIN'">
                         <a class="nav-link" [routerLink]="['/adminPanel']" [routerLinkActive]="['active']">Panel Admin</a>

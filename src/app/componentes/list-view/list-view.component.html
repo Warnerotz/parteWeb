@@ -38,7 +38,7 @@
     <div class="card mb-3 mt-5">
         <img class="card-img-top imgListView" src="{{lista.img ? url+ 'listImage/' + lista.img : 'http://via.placeholder.com/1108x281'}}" alt="Card image cap">
         <div class="card-header text-center">
-            Lista de Reproducción
+            Reproducción
         </div>
         <div class="card-body mediaCard">
             <div *ngFor="let media of lista.media; let i = index">
@@ -53,9 +53,9 @@
                         {{media.fellow}}
                     </div>
                     <div class="col-md-4">
-                        <span class="mt-4" (click)="sendMedia(media.name)"><i class="fa fa-play-circle buttonMedia"></i></span>
-                        <span class="mt-4" (click)="pauseVideo()"><i class="fa fa-pause-circle buttonMedia"></i></span>
-                        <span class="mt-4"><i class="fa fa-stop-circle buttonMedia"></i></span>
+                        <button class="btn btn-success buttonMedia" (click)="sendMedia(media.name)"><i class="fa fa-play-circle"></i></button>
+                        <button class="btn btn-success buttonMedia" (click)="pauseVideo()"><i class="fa fa-pause-circle "></i></button>
+                        <button class="btn btn-success buttonMedia" (click)="restartVideo()"><i class="fa fa-undo"></i></button>
                     </div>
                 </div>
             </div>

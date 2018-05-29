@@ -5,11 +5,11 @@
             <div class="card cardList" *ngFor="let lista of listas">
                 <img [routerLink]="['/listView',lista._id]" class="card-img-top imgListas" src="{{lista.img ? url+ 'listImage/' + lista.img : 'http://via.placeholder.com/348x222'}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{lista.name}}</h5>
+                    <h5 class="card-title text-center">{{lista.name}}</h5>
                     <p class="card-text text-justify">{{lista.description}}</p>
                 </div>
-                <div class="card-footer">
-                    <span>fecha de creacion</span>
+                <div class="card-footer text-center">
+                    <span>{{lista.createdAt | date: 'dd/MM/yyyy'}}</span>
                 </div>
             </div>
         </div>

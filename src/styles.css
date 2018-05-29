@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+body {
+    background: #f6c963
+}
+
 .pointer {
     cursor: pointer;
 }
 
 .navAltura {
     height: 70px;
-    font-size: 25px;
 }
 
 .avatarImage {
@@ -15,7 +18,7 @@
 
 .avatarImageNav {
     width: 50px;
-    height: 50ps;
+    height: 50px;
     border-radius: 700px;
     overflow: hidden;
 }
@@ -37,12 +40,12 @@
 }
 
 .mediaCard {
+    font-weight: bold;
     font-size: 25px;
 }
 
 .buttonMedia {
-    font-size: 50px;
-    color: #28a745;
+    width: 80px;
     margin: 0px 10px
 }
 

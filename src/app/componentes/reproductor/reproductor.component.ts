@@ -25,7 +25,6 @@ export class ReproductorComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log('holaaa');
     this._WebSocketService.reciveVideo().subscribe(msg => {
      this.video = msg.src;
      this.play = msg.play;
@@ -34,18 +33,12 @@ export class ReproductorComponent implements OnInit {
     });
     this._WebSocketService.pauseVideo().subscribe(msg => {
       this.pauseVideo();
-
-
-
     });
 
-    this._WebSocketService.stopVideo().subscribe(msg => {
-      if (msg) {
-        this.stopVideo();
+    this._WebSocketService.restartVideo().subscribe(msg =>{
+      this.restartVideo();
 
-      }
-
-      });
+    });
   }
 
 
@@ -89,9 +82,11 @@ export class ReproductorComponent implements OnInit {
 
   }
 
-  stopVideo() {
-    setTimeout(() => this.api.getDefaultMedia().ended(), 300);
-
+  restartVideo() {
+    if (this.api.state === 'playing' || this.api.state === 'paused') {
+      this.api.getDefaultMedia().currentTime = 0;
+    }
   }
+
 
 }

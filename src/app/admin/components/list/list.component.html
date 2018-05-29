@@ -24,7 +24,7 @@
                         <td *ngIf="user.validated">Si</td>
                         <td *ngIf="!user.validated">No</td>
                         <td>
-                            <button class='btn btn-success' (click)='validarUsuario(user)'>Validar Usuario</button>
+                            <button *ngIf="!user.validated" class='btn btn-success' (click)='validarUsuario(user)'>Validar Usuario</button>
                             <a class='btn btn-danger' href='#Modal-{{user._id}}' data-toggle="modal">Borrar Usuario</a>
                         </td>
                         <div class="modal fade" id="Modal-{{user._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

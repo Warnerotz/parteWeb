@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   public user: User;
   public identity;
   public token;
+  public validate;
   public body;
   public status: string;
 
@@ -30,6 +31,11 @@ export class HomeComponent implements OnInit {
     // loguear al user y conseguir el objeto usuario
     this._usersService.login(this.user).subscribe(
       response => {
+        if (response.message ==='usuario no validado'){
+          this.validate = false;
+        } else {
+          this.validate = true;
+        }
         delete response.user.password;
         this.identity = response.user;
 

@@ -49,12 +49,12 @@ export class ListasService {
     return this.http.get(this.listaURL + 'list/media/' + mediaId, {headers: headers} ).map(res => res);
   }
 
-  getListas() {
+  getListas(userId) {
     const headers = new Headers({
       'Content-Type': 'application/json',
       'authorization': this._usersService.getToken(),
     });
-    return this.http.get(this.listaURL + 'lists', {headers: headers}).map(res => res.json());
+    return this.http.get(this.listaURL + 'lists/' + userId, {headers: headers}).map(res => res.json());
   }
 
   deleteMedia(listId, mediaId) {

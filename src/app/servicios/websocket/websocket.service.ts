@@ -22,9 +22,13 @@ export class WebsocketService {
 
   }
 
-  stopVideo() {
-    return this.socket.fromEvent<any>('stopClient').map(data => data);
+  restartVideo() {
+    return this.socket.fromEvent<any>('restartClient').map(data => data);
 
+  }
+
+  restartVideoEmiter() {
+    this.socket.emit('restart');
   }
 
   pauseVideoEmiter() {

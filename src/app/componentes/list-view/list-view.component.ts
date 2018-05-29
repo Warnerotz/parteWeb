@@ -54,8 +54,12 @@ export class ListViewComponent implements OnInit {
 
   }
 
-  pauseVideo(){
+  pauseVideo() {
     this._websocketService.pauseVideoEmiter();
+
+  }
+  restartVideo() {
+    this._websocketService.restartVideoEmiter();
 
   }
 
